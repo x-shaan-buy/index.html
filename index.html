@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer X-ShaaN</title>
+
+    <!-- AOS Library CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #141414);
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .box {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.4), -15px -15px 30px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: 0.4s ease-in-out;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .box:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ff9800;
+            margin-bottom: 20px;
+        }
+
+        #time {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, #ff9800, #ff5722);
+            color: #fff;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.4s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        .service-box {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            transition: 0.4s ease-in-out;
+            cursor: pointer;
+        }
+
+        .service-box:hover {
+            color: #ff9800;
+            transform: scale(1.1);
+        }
+
+        .footer {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 30px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        /* User Feedback Styles */
+        .feedback-box {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: 0.3s ease-in-out;
+        }
+
+        .feedback-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .feedback-text {
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        .user-info {
+            font-size: 14px;
+            margin-top: 10px;
+            color: #ff9800;
+        }
+
+        /* Total Service Section */
+        .service-stats {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+            transition: 0.4s ease-in-out;
+        }
+
+        .service-stats i {
+            margin-right: 10px;
+            color: #ff9800;
+        }
+
+        .service-stats p {
+            font-size: 20px;
+        }
+
+        .service-stats:hover {
+            transform: translateY(-10px);
+        }
+        /* টেক্সটের উপর আলোর প্রভাব */
+        .lightning-text {
+        font-size: 25px; /* টেক্সট সাইজ */
+        font-weight: bold; /* ফন্ট ওজন */
+        color: #ffffff; /* টেক্সটের মূল রঙ */
+        text-shadow: 0px 0px 10px #ff0000, 0px 0px 20px #ff0000, 0px 0px 30px #ff0000; /* আলোর প্রভাব */
+        transition: text-shadow 0.3s ease-in-out; /* হালকা পরিবর্তনের জন্য ট্রানজিশন */
+        display: inline; /* টেক্সটের সাথে প্রভাব রাখতে inline */
+        position: relative; /* আলোর প্রভাব সঠিকভাবে দেখানোর জন্য */
+        z-index: 1; /* অন্যান্য উপাদানের উপর আছড়ে পড়বে না */
+        }
+        
+        .lightning-text:hover {
+        text-shadow: 0px 0px 20px #ff0000, 0px 0px 40px #ff0000, 0px 0px 60px #ff0000; /* হোভার করলে আলোর প্রভাব বৃদ্ধি */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="box" data-aos="fade-up">
+            <img src="https://assets.onecompiler.app/42weepxyg/43akfegmw/20250302_111632.png" alt="Profile" class="profile-img">
+            <div id="time"></div><br>
+            <p class="lightning-text">Developer X-ShaaN</p>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="box" data-aos="zoom-in">
+            <a href="https://wa.me/8801621439834?text=Hi%20Developer%20X-ShaaN%20I%20want%20to%20talk%20to%20you%20about%20App%20Development%20and%20Website%20Development.%20Please%20reply%20to%20my%20message." class="button">
+                Contact X-ShaaN
+            </a>
+        </div>
+
+        <!-- Services Section -->
+        <div class="box service-box" data-aos="fade-right">
+            <p>🚀 App Developer</p>
+            <p>Modern mobile app development with cutting-edge technologies.</p>
+        </div>
+
+        <div class="box service-box" data-aos="fade-left">
+            <p>💻 Website Developer</p>
+            <p>Custom, responsive, and professional website development solutions.</p>
+        </div>
+
+        <div class="box service-box" data-aos="fade-right">
+            <p>🤖 Bot Developer</p>
+            <p>AI-powered chatbots & automation tools for your business.</p>
+        </div>
+
+        <div class="box service-box" data-aos="fade-left">
+            <p>🎨 GFX Artist</p>
+            <p>Premium graphics design and branding services for your business.</p>
+        </div>
+
+        <!-- Customer Feedback Section -->
+        <div class="feedback-box" data-aos="zoom-in">
+            <p class="feedback-text">🌟 "X-ShaaN is highly professional and delivers outstanding services!"</p>
+            <div class="user-info">- Ahmed, Dhaka</div>
+        </div>
+
+        <div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "App development was excellent, highly recommended!"</p>
+    <div class="user-info">- Farida, Chattogram</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "The website design exceeded my expectations. Very professional!"</p>
+    <div class="user-info">- Imran, Sylhet</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "X-ShaaN delivered my app on time with great features!"</p>
+    <div class="user-info">- Rashid, Dhaka</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "Amazing work! The website looks fantastic and works perfectly!"</p>
+    <div class="user-info">- Sultana, Barishal</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "The bot was implemented seamlessly and helped automate my business!"</p>
+    <div class="user-info">- Rashed, Rajshahi</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "Incredible customer support and attention to detail. Highly recommend!"</p>
+    <div class="user-info">- Mina, Khulna</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "Professional app development team, will definitely hire again!"</p>
+    <div class="user-info">- Saiful, Dhaka</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "X-ShaaN is a skilled developer, great communication and delivery!"</p>
+    <div class="user-info">- Arif, Comilla</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "Top-notch website development with smooth functionality!"</p>
+    <div class="user-info">- Shima, Narayanganj</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "Perfect bot integration for my customer service. Highly satisfied!"</p>
+    <div class="user-info">- Emon, Gazipur</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "Excellent work! Delivered before the deadline with extra features!"</p>
+    <div class="user-info">- Rakib, Tangail</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "The app is fast and user-friendly, exactly what I was looking for!"</p>
+    <div class="user-info">- Rina, Mymensingh</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "The website looks stunning, and the backend works flawlessly!"</p>
+    <div class="user-info">- Tanvir, Rajshahi</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "My business has improved thanks to the bot, excellent service!"</p>
+    <div class="user-info">- Iqbal, Chattogram</div>
+</div>
+
+<div class="feedback-box" data-aos="zoom-in">
+    <p class="feedback-text">🌟 "Highly professional service with great attention to my needs!"</p>
+    <div class="user-info">- Farhan, Jessore</div>
+</div>
+
+        <!-- Totally Complete Service Section -->
+        <div class="service-stats" data-aos="fade-up">
+            <i class="fas fa-mobile-alt"></i>
+            <p>250+ App Developed</p>
+        </div>
+
+        <div class="service-stats" data-aos="fade-up">
+            <i class="fas fa-laptop"></i>
+            <p>300+ Websites Developed</p>
+        </div>
+
+        <div class="service-stats" data-aos="fade-up">
+            <i class="fas fa-robot"></i>
+            <p>150+ Bots Developed</p>
+        </div>
+
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer X-ShaaN</title>
+
+    <!-- Google Material Icons for Social Media -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1E1E1E, #2A2A72);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1E1E1E, #2A2A72);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .social-links li {
+            margin: 0 15px;
+        }
+
+        .social-icon {
+            font-size: 28px;
+            color: #fff;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: #ff9800;
+        }
+
+        .footer-text-small {
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-text {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="footer-container">
+            <!-- Contact Information -->
+            <div class="footer-text"><b>📩 Email: aymanhasanshaan@gmail.com</b></div>
+            <div class="footer-text"><b>📞 Phone: 09638487031</b></div>
+            <div class="footer-text"><b>💬 WhatsApp: +8801621439834</b></div>
+        </div>
+
+        <!-- Social Media Links -->
+        <ul class="social-links">
+            <li><a href="https://www.facebook.com/ayman.hasan.shaan" target="_blank" class="social-icon">
+                <span class="material-icons">facebook</span>
+            </a></li>
+            <li><a href="https://wa.me/8801621439834" target="_blank" class="social-icon">
+                <span class="material-icons">whatsapp</span>
+            </a></li>
+            <li><a href="https://t.me/8801621439834" target="_blank" class="social-icon">
+                <span class="material-icons">telegram</span>
+            </a></li>
+        </ul>
+
+        <p class="footer-text-small">© 2025 Developer X-ShaaN. All Rights Reserved.</p>
+    </div>
+
+</body>
+</html>
+
+    <!-- JavaScript to update live time -->
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = { timeZone: "Asia/Dhaka", hour12: true };
+            const time = now.toLocaleTimeString("en-US", options);
+            document.getElementById("time").innerText = `🕒 Live Time: ${time}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+    <!-- AOS Library JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+
+</body>
+</html>
